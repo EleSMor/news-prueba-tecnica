@@ -1,2 +1,2 @@
-# News-prueba-tecnica
+# news-prueba-tecnica
 Prueba técnica para Allfunds
