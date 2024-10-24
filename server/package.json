@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node --watch index.js "
+    "start": "node index.js",
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "keywords": [],
   "author": "Ele",
@@ -16,6 +20,7 @@
   },
   "devDependencies": {
     "jest": "^29.7.0",
+    "mongodb-memory-server": "^10.1.2",
     "mongoose": "^8.7.2",
     "supertest": "^7.0.0"
   }
