@@ -17,3 +17,20 @@ export const getNews = async () => {
     return news;
 };
 
+export const createNews = async (form) => {
+    const request = await fetch(newsUrl, {
+        method: 'POST',
+        credentials: 'include',
+        body: JSON.stringify(form),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    const newAd = await request.json();
+
+    if (!request.ok) {
+        throw new Error('Error creating news', newAd.message);
+    };
+    return newAd;
+};
