@@ -6,6 +6,7 @@ const app = express();
 
 // Routes
 const indexRoutes = require('./routes/index.routes');
+const newsRoutes = require('./routes/news.routes');
 
 db.connect();
 
@@ -20,6 +21,7 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 app.use('/', indexRoutes);
+app.use('/news', newsRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
