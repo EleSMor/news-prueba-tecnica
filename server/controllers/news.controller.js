@@ -39,8 +39,27 @@ const archiveNews = async (req, res, next) => {
     }
 }
 
+const deleteNews = async (req, res, next) => {
+    try {
+        const { id } = req.params
+
+        const isArchivedNews = await News.findOne({_id: { $eq: id }, archiveDate: { $ne: null }})
+
+        if (!isArchivedNews) {
+            return res.status(400).json(`It is not possible to delete new with id ${id}.`)
+        }
+        
+        await News.findByIdAndDelete(id);
+
+        return res.status(200).json(`New with id ${id} has been successfully deleted`);
+    } catch (error) {
+        return next(error);
+    }
+}
+
 module.exports = {
     getNews,
     createNews,
     archiveNews,
+    deleteNews,
 }
