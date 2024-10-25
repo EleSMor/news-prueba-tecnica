@@ -122,19 +122,10 @@ button:active {
 
 #sidebar nav a span {
   float: right;
-  color: #eeb004;
-}
-
-#sidebar nav a.active span {
-  color: inherit;
 }
 
 i {
   color: #818181;
-}
-
-#sidebar nav .active i {
-  color: inherit;
 }
 
 #sidebar ul {
@@ -161,13 +152,8 @@ i {
   gap: 1rem;
 }
 
-#sidebar nav a:hover {
-  background: #e3e3e3;
-}
-
 #sidebar nav a.active {
   background: hsl(224, 98%, 58%);
-  color: white;
 }
 
 #sidebar nav a.pending {
@@ -180,6 +166,7 @@ i {
   justify-items: center;
   width: 100%;
   background-color: #e3e3e3;
+  overflow-y: scroll;
 }
 
 #detail.loading {

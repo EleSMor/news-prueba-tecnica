@@ -3,6 +3,9 @@ import { Outlet, Link, useLocation } from "react-router-dom";
 export default function Root() {
   const location = useLocation();
 
+  const isNewsLocation = location.pathname === "/news";
+  const isArchivedNewsLocation = location.pathname === "/archived";
+
   return (
     <>
       <div id="sidebar">
@@ -15,10 +18,35 @@ export default function Root() {
         <nav>
           <ul>
             <li>
-              <Link to={`/news`}>News</Link>
+              <Link
+                className={`${
+                  isNewsLocation && "bg-blue-600"
+                } hover:bg-slate-300`}
+                to={`/news`}
+              >
+                <span
+                  className={`${
+                    isNewsLocation ? "text-white" : "text-blue-600"
+                  } font-bold  `}
+                >
+                  News
+                </span>
+              </Link>
             </li>
             <li>
-              <Link to={`/archived`}>Archived</Link>
+              <Link
+                className={`${isArchivedNewsLocation && "bg-blue-600"}
+                 hover:bg-slate-300`}
+                to={`/archived`}
+              >
+                <span
+                  className={`${
+                    isArchivedNewsLocation ? "text-white" : "text-blue-600"
+                  } font-bold  `}
+                >
+                  Archived
+                </span>
+              </Link>
             </li>
           </ul>
         </nav>
