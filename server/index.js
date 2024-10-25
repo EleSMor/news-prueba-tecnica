@@ -1,7 +1,7 @@
 const express = require("express");
 const dotenv = require('dotenv');
 dotenv.config();
-const db = require('./db');
+const cors = require("cors");
 const app = express();
 
 // Routes
@@ -18,10 +18,20 @@ app.use((req, res, next) => {
     return next();
 });
 
+// Allowed urls CORS
+app.use(
+  cors({
+    origin: ["http://localhost:5173"],
+    credentials: true,
+    optionsSuccessStatus: 200,
+  })
+);
+
 app.use(express.json());
 
-app.use('/', indexRoutes);
-app.use('/news', newsRoutes);
+const API = "/api";
+app.use(`${API}/`, indexRoutes);
+app.use(`${API}/news`, newsRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
