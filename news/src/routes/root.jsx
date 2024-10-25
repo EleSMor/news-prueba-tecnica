@@ -1,6 +1,8 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useLocation } from "react-router-dom";
 
 export default function Root() {
+  const location = useLocation();
+
   return (
     <>
       <div id="sidebar">
@@ -22,6 +24,11 @@ export default function Root() {
         </nav>
       </div>
       <div id="detail">
+        {location.pathname === "/" && (
+          <div className="font-extrabold text-4xl">
+            This is News APP for Allfunds
+          </div>
+        )}
         <Outlet />
       </div>
     </>
