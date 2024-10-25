@@ -2,16 +2,16 @@ import { BASE_URL } from "./constants";
 const newsUrl = `${BASE_URL}/news`;
 
 export const getNews = async () => {
-    const request = await fetch(newsUrl, {
+  const request = await fetch(newsUrl, {
     method: "GET",
-        headers: {
+    headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
-        },
-    });
-    const news = await request.json();
-    if (!request.ok) {
+    },
+  });
+  const news = await request.json();
+  if (!request.ok) {
     throw new Error("Error getting news", news.message);
   }
   return news;
@@ -30,25 +30,25 @@ export const getArchivedNews = async () => {
   if (!request.ok) {
     throw new Error("Error getting archived news", news.message);
   }
-    return news;
+  return news;
 };
 
 export const createNews = async (form) => {
-    const request = await fetch(newsUrl, {
+  const request = await fetch(newsUrl, {
     method: "POST",
     credentials: "include",
-        body: JSON.stringify(form),
-        headers: {
+    body: JSON.stringify(form),
+    headers: {
       "Content-Type": "application/json",
     },
-    });
+  });
 
-    const newAd = await request.json();
+  const newAd = await request.json();
 
-    if (!request.ok) {
+  if (!request.ok) {
     throw new Error("Error creating news", newAd.message);
   }
-    return newAd;
+  return newAd;
 };
 
 export const archiveNews = async (form) => {
@@ -67,4 +67,23 @@ export const archiveNews = async (form) => {
     throw new Error("Error archiving news", archivedNews.message);
   }
   return archivedNews;
+};
+
+export const deleteNews = async (form) => {
+  console.log({ form });
+  const request = await fetch(`${newsUrl}/${form.id}`, {
+    method: "DELETE",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const deletedAd = await request.json();
+
+  if (!request.ok) {
+    throw new Error("Error creating new Contact", deletedAd.message);
+  }
+
+  return deletedAd;
 };

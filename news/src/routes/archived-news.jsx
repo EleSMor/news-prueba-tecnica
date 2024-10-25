@@ -7,6 +7,16 @@ export async function loader() {
   return { archivedNews };
 }
 
+export async function action({ request }) {
+  const formData = await request.formData();
+
+  const updates = Object.fromEntries(formData);
+
+  await deleteNews(updates);
+
+  return redirect(`/archived`);
+}
+
 export default function News() {
   const { archivedNews } = useLoaderData();
 

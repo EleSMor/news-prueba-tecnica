@@ -10,7 +10,10 @@ import News, {
 } from "./routes/news";
 import ArchivedNews, {
   loader as archivedNewsLoader,
+  action as archivedAction,
 } from "./routes/archived-news";
+import CreateNews, { action as createNewsAction } from "./routes/create-news";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,6 +30,7 @@ const router = createBrowserRouter([
         path: "archived",
         element: <ArchivedNews />,
         loader: archivedNewsLoader,
+        action: archivedAction,
       },
       {
         path: "create-news",
