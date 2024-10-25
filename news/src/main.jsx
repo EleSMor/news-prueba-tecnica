@@ -4,7 +4,13 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Root from "./routes/root";
 import ErrorPage from "./error-page";
-import News, { loader as newsLoader } from "./routes/news";
+import News, {
+  loader as newsLoader,
+  action as newsAction,
+} from "./routes/news";
+import ArchivedNews, {
+  loader as archivedNewsLoader,
+} from "./routes/archived-news";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -15,6 +21,12 @@ const router = createBrowserRouter([
         path: "news",
         element: <News />,
         loader: newsLoader,
+        action: newsAction,
+      },
+      {
+        path: "archived",
+        element: <ArchivedNews />,
+        loader: archivedNewsLoader,
       },
     ],
   },
