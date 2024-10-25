@@ -2,7 +2,7 @@ const News = require("../models/news.model");
 
 const getNews = async (req, res, next) => {
   try {
-    const news = await News.find({ archiveDate: null }).sort({ createdAt: -1 });
+    const news = await News.find({ archiveDate: null }).sort({ date: "desc" });
 
     return res.status(200).json(news);
   } catch (error) {
@@ -13,7 +13,7 @@ const getNews = async (req, res, next) => {
 const getArchivedNews = async (req, res, next) => {
   try {
     const news = await News.find({ archiveDate: { $ne: null } }).sort({
-      archivedDate: -1,
+      archiveDate: "desc",
     });
 
     return res.status(200).json(news);

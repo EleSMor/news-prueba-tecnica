@@ -1,21 +1,22 @@
 const express = require("express");
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 dotenv.config();
+const db = require("./db");
 const cors = require("cors");
 const app = express();
 
 // Routes
-const indexRoutes = require('./routes/index.routes');
-const newsRoutes = require('./routes/news.routes');
+const indexRoutes = require("./routes/index.routes");
+const newsRoutes = require("./routes/news.routes");
 
 db.connect();
 
 const PORT = process.env.PORT || 3500;
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    return next();
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  return next();
 });
 
 // Allowed urls CORS
