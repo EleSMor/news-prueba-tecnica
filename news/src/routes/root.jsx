@@ -6,6 +6,9 @@ export default function Root() {
       <div id="sidebar">
         <div className="flex justify-between">
           <h1>NEWS APP</h1>
+          <Link to={`/create-news`}>
+            <button type="submit">Add</button>
+          </Link>
         </div>
         <nav>
           <ul>

@@ -28,6 +28,11 @@ const router = createBrowserRouter([
         element: <ArchivedNews />,
         loader: archivedNewsLoader,
       },
+      {
+        path: "create-news",
+        element: <CreateNews />,
+        action: createNewsAction,
+      },
     ],
   },
 ]);
