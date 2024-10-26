@@ -21,9 +21,10 @@ export default function News() {
   const { news } = useLoaderData();
 
   return (
-    <div className="text-center">
-      <h1 className="font-bold text-3xl mb-8 border-b border-black">News</h1>
-      <NewsList news={news} />
-    </div>
+    <NewsList
+      news={news}
+      title="News"
+      emptyMessage={news.length === 0 && "There are not News available."}
+    />
   );
 }

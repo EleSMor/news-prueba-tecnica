@@ -21,17 +21,12 @@ export default function News() {
   const { archivedNews } = useLoaderData();
 
   return (
-    <div className="text-center">
-      <h1 className="font-bold text-3xl mb-8 border-b border-black">
-        Archived News
-      </h1>
-      {archivedNews.length == 0 ? (
-        <h1 className="font-bold text-xl mb-2">
-          There are not Archived News yet.
-        </h1>
-      ) : (
-        <NewsList news={archivedNews} />
-      )}
-    </div>
+    <NewsList
+      news={archivedNews}
+      title="Archived News"
+      emptyMessage={
+        archivedNews.length === 0 && "There are not Archived News available."
+      }
+    />
   );
 }
